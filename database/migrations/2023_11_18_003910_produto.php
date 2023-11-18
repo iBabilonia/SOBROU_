@@ -11,20 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('endereco_usuario', function (Blueprint $table) {
+        Schema::create('produto', function (Blueprint $table) {
 
             $table->foreign('cnpj')->references()->on('users');
             $table->string('cpf');
 
-            $table->string('rua');
-            $table->string('numero');
-            $table->string('complemento');
-            $table->string('estado');
-            $table->string('cidade');
-            $table->string('zona');
+            $table->string('nome');
+            $table->string('imagem_produto');
+            $table->date('data_fabricacao');
+            $table->date('data_validade');
+            $table->decimal('preco_produto');
+            $table->decimal('peso_produto');
             $table->string('tipo');
-            $table->string('cep');
-            $table->string('bairro');
+            $table->text('descricao');
+            
+
         });
     }
 
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('endereco_usuario');
+        Schema::dropIfExists('produto');
     }
 };

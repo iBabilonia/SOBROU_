@@ -19,6 +19,13 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('cnpj');
+            $table->string('cpf');
+            $table->string('imagem_usuario');
+            $table->string('telefone');
+            $table->string('password');
+            $table->string('email');
+
         });
     }
 
