@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('produto', function (Blueprint $table) {
 
-            $table->foreign('cnpj')->references()->on('users');
-            $table->string('cpf');
+            $table->string('cnpj_vendedor');
+            $table->foreign('cnpj_vendedor')->references('cnpj')->on('users');
 
             $table->string('nome');
             $table->string('imagem_produto');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->decimal('peso_produto');
             $table->string('tipo');
             $table->text('descricao');
-            
+
 
         });
     }

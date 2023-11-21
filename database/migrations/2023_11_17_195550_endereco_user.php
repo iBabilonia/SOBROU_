@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('endereco_usuario', function (Blueprint $table) {
 
-            $table->foreign('cnpj')->references()->on('users');
-            $table->string('cpf');
+            $table->string('cpf_cliente');
+            $table->foreign('cpf_cliente')->references('cpf')->on('users');
+
+            $table->string('cnpj_vendedor');
+            $table->foreign('cnpj_vendedor')->references('cnpj')->on('users');
 
             $table->string('rua');
             $table->string('numero');
