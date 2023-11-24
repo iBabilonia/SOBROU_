@@ -125,6 +125,10 @@ Route::get('/pratofeito', function () {
 });
 
 
+Route::get('/users', function () {
+    return view('./app/users');
+});
+
 
 
 Route::middleware('auth')->group(function () {
