@@ -6,22 +6,13 @@ use Illuminate\Http\Request;
 
 class CrudController extends Controller
 {
-    public readonly User $user
-       public function __construct ('')
-    {
-
-        $this->user = new User();
-
-    }
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = $this->user->all();
-        return view('users',['users' =>$users]);
 
+     return view ('\index');   //
     }
 
     /**

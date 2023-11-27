@@ -47,9 +47,17 @@ Route::get('/indexvend', function () {
     return view('./app/index-vend');
 });
 
+//Route::get('/', function () {
+//    return view('./app/index-base');
+//});
+
 Route::get('/', function () {
-    return view('./app/index-base');
+    return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/home', function () {
     return view('./app/index');
@@ -125,18 +133,15 @@ Route::get('/pratofeito', function () {
 });
 
 
-Route::get('/users', function () {
-    return view('./app/users');
-});
-
 
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
-    
+
+
+
 });
 
 require __DIR__.'/auth.php';

@@ -34,6 +34,18 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'cpf' => 'required|string|unique:users|max:11',
+            'imagem_usuario' => 'nullable|string',
+            'telefone' => 'required|string|max:15',
+            'rua' => 'required|string',
+            'numero' => 'required|string',
+            'complemento' => 'nullable|string',
+            'estado' => 'required|string',
+            'cidade' => 'required|string',
+            'zona' => 'required|string',
+            'tipo' => 'required|string',
+            'cep' => 'required|string',
+            'bairro' => 'required|string',
         ]);
 
         $user = User::create([
