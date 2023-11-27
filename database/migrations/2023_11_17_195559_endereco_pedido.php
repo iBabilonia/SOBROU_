@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('endereco_pedido', function (Blueprint $table) {
@@ -19,6 +17,8 @@ return new class extends Migration
             $table->string('cnpj_vendedor');
             $table->foreign('cnpj_vendedor')->references('cnpj')->on('users');
 
+            $table->foreignId('cod_produto');
+            $table->foreign('cod_produto')->references('cod_produto')->on('produto');
 
             $table->string('rua');
             $table->string('numero');
@@ -33,9 +33,7 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
         Schema::dropIfExists('endereco_pedido');

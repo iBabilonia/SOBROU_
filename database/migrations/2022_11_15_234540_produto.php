@@ -6,32 +6,31 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('produto', function (Blueprint $table) {
 
+            $table->string('cpf_cliente');
+            $table->foreign('cpf_cliente')->references('cpf')->on('users');
+
             $table->string('cnpj_vendedor');
             $table->foreign('cnpj_vendedor')->references('cnpj')->on('users');
 
-            $table->string('nome');
-            $table->string('imagem_produto');
-            $table->date('data_fabricacao');
-            $table->date('data_validade');
-            $table->decimal('preco_produto');
-            $table->decimal('peso_produto');
-            $table->string('tipo');
-            $table->text('descricao');
 
+            $table->id('cod_produto');
+            $table->integer('quantidade');
+            $table->text('descricao');
+            $table->decimal('peso');
+            $table->string('categoria');
+            $table->decimal('integger');
+            $table->string('tipo');
+            $table->date('data_validade');
+            $table->date('data_fabricacao');
 
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('produto');
